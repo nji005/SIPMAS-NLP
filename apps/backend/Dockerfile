@@ -14,7 +14,7 @@ COPY apps/backend/ ./apps/backend/
 RUN pnpm install --frozen-lockfile --filter backend...
 
 # Generate Prisma Client and build TypeScript
-RUN pnpm --filter backend exec prisma generate
+RUN DATABASE_URL="mysql://build:build@localhost:3306/build" pnpm --filter backend exec prisma generate
 RUN pnpm --filter backend run build
 
 # Deploy isolated production dependencies and generate production Prisma Client
