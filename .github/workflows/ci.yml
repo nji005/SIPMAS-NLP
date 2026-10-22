@@ -8,9 +8,11 @@ on:
 
 jobs:
   # Job 1: Frontend & Backend Lint and Build (Monorepo)
-  monorepo-lint-and-build:
+    monorepo-lint-and-build:
     runs-on: ubuntu-latest
     name: Lint & Build (Frontend & Backend)
+    env:
+      DATABASE_URL: mysql://build:build@localhost:3306/build
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
