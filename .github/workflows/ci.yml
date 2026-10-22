@@ -48,6 +48,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Generate Prisma Client
+        run: pnpm --filter backend exec prisma generate
+        env:
+          DATABASE_URL: mysql://build:build@localhost:3306/build
+
       - name: Run Dependency Audit
         run: pnpm audit --prod --audit-level=high
         continue-on-error: true
