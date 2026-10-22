@@ -57,6 +57,11 @@ Salin file `.env.example` ke `.env` di masing-masing service jika belum ada:
   FRONTEND_URL="http://localhost:3000"
   ```
 
+- **buat JWT SECRET**:
+  ```bash
+  node -e "console.log(require('crypto').randomBytes(64).toString('base64'))"
+  ```
+
 - **Frontend** (`apps/frontend/.env`):
   ```env
   NEXT_PUBLIC_API_URL=http://localhost:5001
